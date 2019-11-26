@@ -13,7 +13,7 @@ void assert(int a, int b){
     }
 }
 int main(){
-    printf("***************Beginning Test for Bug 2***************\n");
+    printf("***************Beginning Test for Bug 3***************\n");
     int seed = 10;
     int numPlayers = 2;
     //set your card array
@@ -57,7 +57,7 @@ int main(){
             GRemodel++;
         }
     }
-    printf("Result %d remodel in hand. Expected %d.\n", testRemodel, GRemodel);
+    printf("Result %d remodel in hand. Expected %d.\n", testRemodel, GRemodel - 1);
     assert(testRemodel, GRemodel - 1);
 
     //assert gold card removed from hand
@@ -73,22 +73,22 @@ int main(){
             GGold++;
         }
     }
-    printf("Result %d gold in hand. Expected %d.\n", testGold, GGold);
+    printf("Result %d gold in hand. Expected %d.\n", testGold, GGold - 1);
     assert(testGold, GGold - 1); 
     //assert silver card added to hand
     int testSilver = 0;
     int GSilver = 0;
-    for(int i = 0; i < test.handCount[0]; i++){
-        if (test.hand[0][i] == silver){
+    for(int i = 0; i < test.discardCount[0]; i++){
+        if (test.discard[0][i] == silver){
             testSilver++;
         }
     }
-    for(int i = 0; i < G.handCount[0]; i++){
-        if (G.hand[0][i] == silver){
+    for(int i = 0; i < G.discardCount[0]; i++){
+        if (G.discard[0][i] == silver){
             GSilver++;
         }
     }
-    printf("Result %d silver in hand. Expected %d.\n", testSilver, GSilver);
+    printf("Result %d silver in discard. Expected %d.\n", testSilver, GSilver);
     assert(testSilver, GSilver + 1); 
     return 0;
 }
