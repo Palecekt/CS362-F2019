@@ -88,7 +88,7 @@ int main(){
             GSilver++;
         }
     }
-    printf("Result %d silver in discard. Expected %d.\n", testSilver, GSilver);
+    printf("Result %d silver in discard. Expected %d.\n", testSilver, GSilver + 1);
     assert(testSilver, GSilver + 1); 
     return 0;
 }
