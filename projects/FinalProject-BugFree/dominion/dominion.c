@@ -467,7 +467,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
     //score from deck
-    for (i = 0; i < state->discardCount[player]; i++)
+    for (i = 0; i < state->deckCount[player]; i++)
     {
         if (state->deck[player][i] == curse) {
             score = score - 1;
@@ -759,7 +759,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         //Backup hand
 
         //Update Coins for Buy
-        updateCoins(currentPlayer, state, 5);
+        // updateCoins(currentPlayer, state, 5);
         x = 1;//Condition to loop on
         while( x == 1) {//Buy one card
             if (supplyCount(choice1, state) <= 0) {
@@ -889,6 +889,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case baron:
+	state->coins += bonus; 
         state->numBuys++;//Increase buys by 1!
         if (choice1 > 0) { //Boolean true or going to discard an estate
             int p = 0;//Iterator for hand!
@@ -955,7 +956,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     case minion:
         //+1 action
         state->numActions++;
-
+	state->coins += bonus;
         //discard card from hand
         discardCard(handPos, currentPlayer, state, 0);
 
@@ -1026,6 +1027,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case tribute:
+	state->coins += bonus;
         if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1) {
             if (state->deckCount[nextPlayer] > 0) {
                 tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
@@ -1068,7 +1070,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             tributeRevealedCards[1] = -1;
         }
 
-        for (i = 0; i <= 2; i ++) {
+        for (i = 0; i < 2; i ++) {
             if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) { //Treasure cards
                 state->coins += 2;
             }
@@ -1178,6 +1180,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
 
     case embargo:
+	state->coins += bonus;
         //+2 Coins
         state->coins = state->coins + 2;
 
