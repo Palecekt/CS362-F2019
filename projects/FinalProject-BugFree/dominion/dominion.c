@@ -954,6 +954,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case minion:
+	//invalid game state, neither option was chosen
+	if (choice1 < 1 && choice2 < 1) {
+	    return -1;	
+	}
         //+1 action
         state->numActions++;
 	state->coins += bonus;
@@ -1079,6 +1083,11 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
                 drawCard(currentPlayer, state);
                 drawCard(currentPlayer, state);
             }
+	    else if (tributeRevealedCards[i] == -1) {
+		if (DEBUG) {
+		    printf("Both revealed cards are the same."\n);	
+		}
+	    }
             else { //Action Card
                 state->numActions = state->numActions + 2;
             }
@@ -1101,7 +1110,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
         for (i = 0; i < state->handCount[currentPlayer]; i++)
         {
-            if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+            if (i != handPos && state->hand[currentPlayer][i]  == state->hand[currentPlayer][choice1] && i != choice1)
             {
                 j++;
             }
