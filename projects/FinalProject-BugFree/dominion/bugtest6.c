@@ -40,10 +40,11 @@ int main() {
     cardEffect(feast, choice1, 0, 0, &G, 0, 0); 
     res = G.handCount[0];
 
-    printf("***************Begin Unit Testing for bug 7******************\n");
+    printf("***************Begin Unit Testing for bug 6******************\n");
     printf("Results of player1 handCount: %d. Expected %d.\n", res, expected);
     myAssert(res == expected);
+    printf("Results of player1 gaining card no greater than 5: %d.\n", G.hand[0][3]);
+    myAssert(G.hand[0][3] <= 5);
 
     return 0;
 }
-

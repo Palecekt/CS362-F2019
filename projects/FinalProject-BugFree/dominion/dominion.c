@@ -783,7 +783,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
                     printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
                 }
 
-                gainCard(choice1, state, 0, currentPlayer);//Gain the card
+                gainCard(choice1, state, 2, currentPlayer);//Gain the card
                 x = 0;//No more buying cards
 
                 if (DEBUG) {
@@ -1062,10 +1062,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             }
             tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
             state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
-            state->deckCount[nextPlayer]--;
+            //state->deckCount[nextPlayer]--;
             tributeRevealedCards[1] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
             state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
-            state->deckCount[nextPlayer]--;
+            //state->deckCount[nextPlayer]--;
         }
 
         if (tributeRevealedCards[0] == tributeRevealedCards[1]) { //If we have a duplicate card, just drop one
@@ -1085,7 +1085,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             }
 	    else if (tributeRevealedCards[i] == -1) {
 		if (DEBUG) {
-		    printf("Both revealed cards are the same."\n);	
+		    printf("Both revealed cards are the same.\n");	
 		}
 	    }
             else { //Action Card

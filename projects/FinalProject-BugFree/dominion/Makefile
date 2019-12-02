@@ -35,6 +35,18 @@ bugtest3: bugtest3.c dominion.o rngs.o
 
 bugtest4: bugtest4.c dominion.o rngs.o
 	gcc -o bugtest4 bugtest4.c dominion.o rngs.o $(CFLAGS)
+
+bugtest5: bugtest5.c dominion.o rngs.o
+	gcc -o bugtest5 bugtest5.c dominion.o rngs.o $(CFLAGS)
+
+bugtest6: bugtest6.c dominion.o rngs.o
+	gcc -o bugtest6 bugtest6.c dominion.o rngs.o $(CFLAGS)
+
+bugtest7: bugtest7.c dominion.o rngs.o
+	gcc -o bugtest7 bugtest7.c dominion.o rngs.o $(CFLAGS)
+
+bugtest8: bugtest8.c dominion.o rngs.o
+	gcc -o bugtest8 bugtest8.c dominion.o rngs.o $(CFLAGS)
 	
 bugtest9: bugtest9.c dominion.o rngs.o
 	gcc -o bugtest9 bugtest9.c dominion.o rngs.o $(CFLAGS)
@@ -45,11 +57,15 @@ bugtest10: bugtest10.c dominion.o rngs.o
 bugtest11: bugtest11.c dominion.o rngs.o
 	gcc -o bugtest11 bugtest11.c dominion.o rngs.o $(CFLAGS)
 
-unittestresults: bugtest1.c bugtest2.c bugtest3.c bugtest4.c bugtest9.c bugtest10.c bugtest11.c dominion.o rngs.o
+unittestresults: bugtest1.c bugtest2.c bugtest3.c bugtest4.c bugtest5.c bugtest6.c  bugtest7.c bugtest8.c bugtest9.c bugtest10.c bugtest11.c dominion.o rngs.o
 	gcc -o bugtest1 bugtest1.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest2 bugtest2.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest3 bugtest3.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest4 bugtest4.c dominion.o rngs.o $(CFLAGS)
+	gcc -o bugtest5 bugtest5.c dominion.o rngs.o $(CFLAGS)
+	gcc -o bugtest6 bugtest6.c dominion.o rngs.o $(CFLAGS)
+	gcc -o bugtest7 bugtest7.c dominion.o rngs.o $(CFLAGS)
+	gcc -o bugtest8 bugtest8.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest9 bugtest9.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest10 bugtest10.c dominion.o rngs.o $(CFLAGS)
 	gcc -o bugtest11 bugtest11.c dominion.o rngs.o $(CFLAGS)
@@ -57,6 +73,10 @@ unittestresults: bugtest1.c bugtest2.c bugtest3.c bugtest4.c bugtest9.c bugtest1
 	./bugtest2 >> unittestresults.out
 	./bugtest3 >> unittestresults.out
 	./bugtest4 >> unittestresults.out
+	./bugtest5 >> unittestresults.out
+	./bugtest6 >> unittestresults.out
+	./bugtest7 >> unittestresults.out
+	./bugtest8 >> unittestresults.out
 	./bugtest9 >> unittestresults.out
 	./bugtest10 >> unittestresults.out
 	./bugtest11 >> unittestresults.out
